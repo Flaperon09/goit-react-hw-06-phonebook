@@ -1,6 +1,9 @@
 import { ContactsInfo } from '../ContactsInfo';
+import { useSelector } from "react-redux";
 
-export const ContactsList = ({ contacts, onDeleteContact }) => {
+export const ContactsList = () => {
+    const contacts = useSelector(state => state.contacts);
+    console.log(contacts);
     return (
         <div>
             <ul>
@@ -8,7 +11,7 @@ export const ContactsList = ({ contacts, onDeleteContact }) => {
                     <ContactsInfo
                         key={contact.id}
                         contact={contact}
-                        onDeleteContact={onDeleteContact} />
+                    />
                 )}              
             </ul>
         </div>

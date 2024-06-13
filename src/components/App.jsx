@@ -1,51 +1,57 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { GlobalStyle } from "../GlobalStyle";
-import shortid from 'shortid';
+// import shortid from 'shortid';
 import { Section } from './Section';
 import Form from './Form';
 import { ContactsList } from './ContactsList';
 import { Filter } from './Filter';
+// import { useSelector } from 'react-redux';
+// import { store } from '../redux/store';
 
 export default function App() {
   
   // === ХУКи состояния
-  const [contacts, setContacts] = useState(() => {return JSON.parse(window.localStorage.getItem('contacts')) ?? []});
-  const [filter, setFilter] = useState('');
+  // const [contacts, setContacts] = useState(() => {return JSON.parse(window.localStorage.getItem('contacts')) ?? []});
+  // const [filter, setFilter] = useState('');
 
-  // === ХУК Запись данных в LocalStorage
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+  // Хук состояния Redux
+  // const contacts = useSelector(store => store.reducer.contacts);
+  // const filter = useSelector(store => store.reducer.filter);
 
-  // === Добавление нового контакта
-  const handleSubmitData = data => {
-    // Добавление id в объект контакта
-    data.id = shortid.generate();
-    // Проверка наличия контакта в state
-    if (contacts.find(option => option.name.toLowerCase() === data.name.toLowerCase())) {
-      return alert(`${data.name} is already in contacts.`);
-    } else {
-        setContacts([data, ...contacts]);
-    }
-  };
+  // // === ХУК Запись данных в LocalStorage
+  // useEffect(() => {
+  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
+  // }, [contacts]);
 
-  // === Обновление filter в состоянии
-  const changeFilter = event => {
-    setFilter(event.currentTarget.value);
-  };
+  // // === Добавление нового контакта
+  // const handleSubmitData = data => {
+  //   // Добавление id в объект контакта
+  //   data.id = shortid.generate();
+  //   // Проверка наличия контакта в state
+  //   if (contacts.find(option => option.name.toLowerCase() === data.name.toLowerCase())) {
+  //     return alert(`${data.name} is already in contacts.`);
+  //   } else {
+  //       setContacts([data, ...contacts]);
+  //   }
+  // };
 
-  // === Фильтрация контактов
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-	  return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),);
-  }
+  // // === Обновление filter в состоянии
+  // const changeFilter = event => {
+  //   setFilter(event.currentTarget.value);
+  // };
 
-  // === Удаление контакта
-  const deleteContact = contactId => {
-	  setContacts( 
-		  contacts.filter(contact => contact.id !== contactId),
-	  );
-  };
+  // // === Фильтрация контактов
+  // const getVisibleContacts = () => {
+  //   const normalizedFilter = filter.toLowerCase();
+	//   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),);
+  // }
+
+  // // === Удаление контакта
+  // const deleteContact = contactId => {
+	//   setContacts( 
+	// 	  contacts.filter(contact => contact.id !== contactId),
+	//   );
+  // };
 
     return (
       <div>
@@ -53,17 +59,20 @@ export default function App() {
         <GlobalStyle />
 
         <Section title="Phonebook">
-          <Form
-            onSubmit={handleSubmitData} />
+          {/* <Form
+            onSubmit={handleSubmitData} /> */}
+          <Form />
         </Section>
 
         <Section title="Contacts">
-          <Filter
+          {/* <Filter
             value={filter}
             onChange={changeFilter} />
           <ContactsList
             contacts={getVisibleContacts()}
-            onDeleteContact={deleteContact} />
+            onDeleteContact={deleteContact} /> */}
+          <Filter />
+          <ContactsList />
         </Section>
 
     </div>

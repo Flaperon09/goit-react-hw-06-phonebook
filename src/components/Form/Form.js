@@ -1,8 +1,15 @@
-import {useState} from 'react';
+import { useState } from 'react';
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/actions";
 
 import { FormData, FormLabel, FormLabelName, FormInputName } from './Form.styled';
 
 export default function Form({ onSubmit }) {
+    // Получаем ссылку на функцию отправки экшенов
+    const dispatch = useDispatch();
+
+    // ХУК состояния Redux
+    // const state = useSelector(state => state.some.value);
     
     // === ХУКи состояния
     const [name, setName] = useState('');
@@ -32,7 +39,7 @@ export default function Form({ onSubmit }) {
     const handleSubmit = event => {
         event.preventDefault();
         // Возврат нового контакта в App
-        onSubmit(state);
+        dispatch(addContact(state));
         // Очистка формы после отправки данных
         reset();
     }
