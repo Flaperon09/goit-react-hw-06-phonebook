@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { filterContact } from "../../redux/actions";
 import { FilterTitle, FilterInput } from './Filter.styled';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = ({value}) => {
     // Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
 

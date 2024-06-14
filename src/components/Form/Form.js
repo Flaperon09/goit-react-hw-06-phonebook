@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/actions";
 
 import { FormData, FormLabel, FormLabelName, FormInputName } from './Form.styled';
+import shortid from 'shortid';
 
 export default function Form({ onSubmit }) {
     // Получаем ссылку на функцию отправки экшенов
@@ -12,11 +13,13 @@ export default function Form({ onSubmit }) {
     // const state = useSelector(state => state.some.value);
     
     // === ХУКи состояния
+    const [id, setId] = useState(0);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
-
+    
     // === Объект состояния
     const state = {
+        id,
         name,
         number,
     };
@@ -33,6 +36,7 @@ export default function Form({ onSubmit }) {
                 break;
             default: return;
         };
+        setId(shortid.generate()); // Генерируем id контакта
     };
     
     // === Добавление нового контакта
