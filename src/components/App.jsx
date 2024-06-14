@@ -1,80 +1,25 @@
-// import { useState, useEffect } from 'react';
 import { GlobalStyle } from "../GlobalStyle";
-// import shortid from 'shortid';
 import { Section } from './Section';
 import Form from './Form';
 import { ContactsList } from './ContactsList';
 import { Filter } from './Filter';
-// import { useSelector } from 'react-redux';
-// import { store } from '../redux/store';
 
 export default function App() {
   
-  // === ХУКи состояния
-  // const [contacts, setContacts] = useState(() => {return JSON.parse(window.localStorage.getItem('contacts')) ?? []});
-  // const [filter, setFilter] = useState('');
+  return (
+    <div>
 
-  // Хук состояния Redux
-  // const contacts = useSelector(store => store.reducer.contacts);
-  // const filter = useSelector(store => store.reducer.filter);
+      <GlobalStyle />
 
-  // // === ХУК Запись данных в LocalStorage
-  // useEffect(() => {
-  //   window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+      <Section title="Phonebook">
+        <Form />
+      </Section>
 
-  // // === Добавление нового контакта
-  // const handleSubmitData = data => {
-  //   // Добавление id в объект контакта
-  //   data.id = shortid.generate();
-  //   // Проверка наличия контакта в state
-  //   if (contacts.find(option => option.name.toLowerCase() === data.name.toLowerCase())) {
-  //     return alert(`${data.name} is already in contacts.`);
-  //   } else {
-  //       setContacts([data, ...contacts]);
-  //   }
-  // };
-
-  // // === Обновление filter в состоянии
-  // const changeFilter = event => {
-  //   setFilter(event.currentTarget.value);
-  // };
-
-  // // === Фильтрация контактов
-  // const getVisibleContacts = () => {
-  //   const normalizedFilter = filter.toLowerCase();
-	//   return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter),);
-  // }
-
-  // // === Удаление контакта
-  // const deleteContact = contactId => {
-	//   setContacts( 
-	// 	  contacts.filter(contact => contact.id !== contactId),
-	//   );
-  // };
-
-    return (
-      <div>
-
-        <GlobalStyle />
-
-        <Section title="Phonebook">
-          {/* <Form
-            onSubmit={handleSubmitData} /> */}
-          <Form />
-        </Section>
-
-        <Section title="Contacts">
-          {/* <Filter
-            value={filter}
-            onChange={changeFilter} />
-          <ContactsList
-            contacts={getVisibleContacts()}
-            onDeleteContact={deleteContact} /> */}
-          <Filter />
-          <ContactsList />
-        </Section>
+      <Section title="Contacts">
+        <Filter />
+        <ContactsList />
+      </Section>
 
     </div>
-    )
+  )
 };

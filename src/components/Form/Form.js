@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/actions";
+import { addContact } from "../../redux/2actions";
 
 import { FormData, FormLabel, FormLabelName, FormInputName } from './Form.styled';
 import shortid from 'shortid';

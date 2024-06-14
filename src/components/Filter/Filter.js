@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { filterContact } from "../../redux/actions";
+import { filterContact } from "../../redux/2actions";
 import { FilterTitle, FilterInput } from './Filter.styled';
 
 export const Filter = ({value}) => {
@@ -17,7 +17,6 @@ export const Filter = ({value}) => {
     return (
         <div>
             <FilterTitle>Find contacts by name</FilterTitle>
-            {/* <FilterInput type="text" name="filter" value={value} onChange={onChange}></FilterInput> */}
             <FilterInput type="text" name="filter" value={value} onChange={handleFilter}></FilterInput>
         </div>
     )
