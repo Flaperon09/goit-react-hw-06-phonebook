@@ -1,16 +1,16 @@
 import { useDispatch } from "react-redux";
-import { filterContact } from "../../redux/2actions";
+import { filterContact } from "../../redux/filterSlice";
 import { FilterTitle, FilterInput } from './Filter.styled';
 
 export const Filter = ({value}) => {
-    // Получаем ссылку на функцию отправки экшенов
+    // === Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
 
-    // Вызываем генератор экшена и передаём идентификатор задачи
-    // Отправляем результат - экшен удаления задачи
-    // const handleFilter = (event) => dispatch(filterContact(event.currentTarget.value));
+    // === Экшен фильтрации контактов
     const handleFilter = (event) => {
+        // Нормализация данных из поля фильтрации
         const normalizedValue = event.target.value.toLowerCase();
+        // Отправка экшена фильтрации
         dispatch(filterContact(normalizedValue))
     };
 

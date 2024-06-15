@@ -14,21 +14,26 @@ import {
     REGISTER,
 } from 'redux-persist';
 
+// Конфигурация persist
 const persistConfig = {
     key: 'root',
     storage,
     whitelist: ['contacts'],
 };
 
+// Комбинированный редюсер контактов и фильтра
 const rootReducer = combineReducers({
     contacts: contactsReducer,
     filter: filterReducer,
 })
 
+// Сохранение контактов в локальном хранилище
 const persistedContactsReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
     reducer: persistedContactsReducer,
+    // Прослойка для игнорирования неиспользуемых экшенов
+    // (отсутствие этой прослойки вызывает ошибку приложения)
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {

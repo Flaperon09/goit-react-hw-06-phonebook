@@ -1,18 +1,15 @@
 import { useState } from 'react';
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/2actions";
+import { addContact } from "../../redux/contactsSlice";
 
 import { FormData, FormLabel, FormLabelName, FormInputName } from './Form.styled';
 import shortid from 'shortid';
 
-export default function Form({ onSubmit }) {
-    // Получаем ссылку на функцию отправки экшенов
+export default function Form() {
+    // === Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
-
-    // ХУК состояния Redux
-    // const state = useSelector(state => state.some.value);
     
-    // === ХУКи состояния
+    // === ХУКи состояния нового контакта
     const [id, setId] = useState(0);
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
@@ -36,13 +33,14 @@ export default function Form({ onSubmit }) {
                 break;
             default: return;
         };
-        setId(shortid.generate()); // Генерируем id контакта
+        // Генерация id контакта
+        setId(shortid.generate()); 
     };
     
     // === Добавление нового контакта
     const handleSubmit = event => {
         event.preventDefault();
-        // Возврат нового контакта в App
+        // Экшен нового контакта
         dispatch(addContact(state));
         // Очистка формы после отправки данных
         reset();

@@ -1,13 +1,12 @@
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/2actions";
+import { deleteContact } from "../../redux/contactsSlice";
 import { ContactListItem, ButtonDelete } from './ContactsInfo.styled';
 
 export const ContactsInfo = ({ contact }) => {
-    // Получаем ссылку на функцию отправки экшенов
+    // === Получаем ссылку на функцию отправки экшенов
     const dispatch = useDispatch();
 
-    // Вызываем генератор экшена и передаём идентификатор задачи
-    // Отправляем результат - экшен удаления задачи
+    // ==== Экшен удаления контакта
     const handleDelete = () => dispatch(deleteContact(contact.id));
 
     return (

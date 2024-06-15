@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+// === Начальное состояние state фильтра
 const filterInitialState = '';
 
+// === Обработка экшена фильтрации
 const filterSlice = createSlice({
     name: "filter",
     initialState: filterInitialState,
